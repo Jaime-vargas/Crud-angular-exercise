@@ -1,6 +1,5 @@
 
-export interface Character {
-  id: number;
+export interface CharacterDto {
   name: string;
   role: string;
   age: number;

@@ -1,1 +1,43 @@
-<p>character-modal.component works!</p>
+<nz-modal [nzVisible]="visible"
+          (nzOnCancel)="closeModal()"
+          [nzFooter]="null"
+          >
+<ng-template nzModalContent>
+  <h1>{{title}}</h1>
+    <form nz-form nzLayout="vertical"  [formGroup]="modalForm" (ngSubmit)="onSubmit()" >
+      <nz-form-item>
+        <nz-form-label nzFor="name">nombre</nz-form-label>
+        <nz-form-control [nzValidateStatus]="
+    modalForm.controls.name.invalid && modalForm.controls.name.touched
+      ? 'error'
+      : ''
+  " nzErrorTip="El nombre debe empezar por A">
+          <input nz-input formControlName="name" type="text" id="name" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzFor="age">edad</nz-form-label>
+        <nz-form-control nzErrorTip="Edad debe ser mayor a 10">
+          <input nz-input formControlName="age" type="number" id="age" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzFor="role">rol</nz-form-label>
+        <nz-form-control nzErrorTip="no puede estar vacio">
+          <input nz-input formControlName="role" type="text" id="role" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control>
+          <button nz-button nzType="primary" type="submit" [nzLoading]="loadingSave">Guardar</button>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control>
+          <button  nz-button nzType="primary" nzDanger (click)="closeModal()" type="button">Cancelar</button>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+</ng-template>
+
+</nz-modal>

@@ -1,1 +1,20 @@
-<p>character.page works!</p>
+<app-character-modal [title]="modalTitle()"
+                     [visible]="modalOpenClose()"
+                     [character]="editCharacter()"
+                     [loadingSave]="loadingSaveButton()"
+                     (close)="closeModal()"
+                     (submit)="onSubmit($event)"
+
+></app-character-modal>
+
+<nz-flex nzVertical nzAlign="center">
+  <button nz-button nzType="primary" (click)="openModal()">Nuevo</button>
+  <character-table [characters]="characters()"
+                   [loading]="loading()"
+                   [deleteLoading]="deleteLoading()"
+
+                   (edit)="openEditModal($event)"
+                   (delete)="deleteCharacter($event)"></character-table>
+</nz-flex>
+
+
